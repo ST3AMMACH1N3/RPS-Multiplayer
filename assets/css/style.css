@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+body {
+    background: #ddd;
+}
+
+#starting-form input {
+    margin-bottom: 20px;
+}
+
+select {
+    text-align-last: center;
+    width: 100%;
+}
+
+.name {
+    font-size: 24px;
+    margin: 5px 0px 15px 0px;
+}
+
+#chat {
+    text-align: left;
+    border: 1px solid #000;
+    background: #eee;
+    position: relative;
+    line-height: 1.25em;
+}
+
+#chat p {
+    padding: 5px 5px;
+}
+
+#chat span {
+    color: #00f;
+}
+
+#chat p:nth-child(odd) {
+    background: #eee;
+}
+
+#chat p:nth-child(even) {
+    background: #aaa;
+}
+
+#choices {
+    display: inline-block;;
+}
+
+#content {
+    max-width: 960px;
+    width: 95%;
+    margin: 20px auto;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+#input-box {
+    border-top: 1px solid #000;
+}
+
+#player-one, #player-two {
+    background: #eee;
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+#player-one {
+    float: left;
+}
+
+#player-two {
+    float: right;
+}
+
+#starting-form {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#send-btn {
+    width: 54px;
+}
+
+#textbox {
+    width: calc(100% - 58px);
+}
+
+@media screen and (max-width: 580px) {
+    #player-one, #player-two {
+        float: none;
+    }
+}
