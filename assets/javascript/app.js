@@ -110,6 +110,7 @@ $(document).ready(() => {
             } else {
                 joinGame();
             }
+
         //If there are 2 players add me to the viewers list
         } else if (players.length === 2) {
             database.ref("viewers").push({
@@ -213,6 +214,19 @@ $(document).ready(() => {
         viewers.splice(viewers.indexOf(snapshot.val().name), 1);
     });
 
+    database.ref("chat").on("child_added", (snapshot) => {
+        if (players.length === 0) {
+            database.ref("chat").remove();
+        } else {
+            let sender = snapshot.val().sender;
+            let message = snapshot.val().message;
+            if ($("#chat p").length > 8) {
+                $("#chat p").last().remove();
+            }
+            $("#chat").prepend(`<p><span>${sender}:</span> ${message}</p>`);
+        }
+    });
+
     $(".hand").on("click", (event) => {
         //Only do things if both players are present
         if (players.length === 2) {
@@ -233,8 +247,20 @@ $(document).ready(() => {
         if (myName !== "") {
             signIn();
             $("#starting-form").remove();
+            $("#send-btn").prop("disabled", false);
         } else {
             myName = "";
         }
     });
+
+    $("#send-btn").on("click", () => {
+        let message = $("#textbox").val().trim();
+        $("#textbox").val("");
+        if (message !== "") {
+            database.ref("chat").push({
+                sender: myName,
+                message: message
+            });
+        }
+    })
 });
