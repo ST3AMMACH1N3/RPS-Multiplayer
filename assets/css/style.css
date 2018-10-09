@@ -63,17 +63,17 @@ select {
     border-top: 1px solid #000;
 }
 
-#player-one, #player-two {
+#player1, #player2 {
     background: #eee;
     padding: 20px;
     border: 1px solid #000;
 }
 
-#player-one {
+#player1 {
     float: left;
 }
 
-#player-two {
+#player2 {
     float: right;
 }
 
@@ -91,7 +91,7 @@ select {
 }
 
 @media screen and (max-width: 580px) {
-    #player-one, #player-two {
+    #player1, #player2 {
         float: none;
     }
 }

@@ -12,14 +12,21 @@
             <div id="starting-form">
                 <input type="text" id="name-input">
                 <input type="button" id="sign-in-btn" class="button" value="Sign in"><br>
-                <select id="room-selector" disabled>
-                    <option disabled selected value="1">-- Select A Room --</option>
-                    <option value="1">-- Game room 1 --</option>
-                    <option value="2">-- Game room 2 --</option>
-                    <option value="3">-- Game room 3 --</option>
-                    <option value="4">-- Game room 4 --</option>
-                    <option value="5">-- Game room 5 --</option>
-                </select>
+            </div>
+            <div id="player1">
+                <p class="name-label">Player One:</p>
+                <p id="player1-name" class="name"></p>
+                <p class="wins-label">Wins: <span id="player1-wins">0</span></p>
+            </div>
+            <div id="player2">
+                <p class="name-label">Player Two:</p>
+                <p id="player2-name" class="name"></p>
+                <p class="wins-label">Wins: <span id="player2-wins">0</span></p>
+            </div>
+            <div id="choices">
+                <img src="assets/images/Rock.png" alt="Rock Hand Symbol" class="hand" data-value="Rock">
+                <img src="assets/images/Paper.png" alt="Paper Hand Symbol" class="hand" data-value="Paper">
+                <img src="assets/images/Scissors.png" alt="Scissors Hand Symbol" class="hand" data-value="Scissors">
             </div>
         </div>
 
