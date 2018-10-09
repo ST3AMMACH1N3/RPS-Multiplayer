@@ -22,11 +22,13 @@ select {
 }
 
 #chat {
+    position: relative;
     text-align: left;
     border: 1px solid #000;
     background: #eee;
     position: relative;
     line-height: 1.25em;
+    min-height: 300px;
 }
 
 #chat p {
@@ -60,6 +62,10 @@ select {
 }
 
 #input-box {
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: absolute;
     border-top: 1px solid #000;
 }
 

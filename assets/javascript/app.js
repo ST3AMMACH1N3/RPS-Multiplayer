@@ -232,6 +232,7 @@ $(document).ready(() => {
         $("#name-input").val("");
         if (myName !== "") {
             signIn();
+            $("#starting-form").remove();
         } else {
             myName = "";
         }
