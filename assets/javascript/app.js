@@ -220,10 +220,8 @@ $(document).ready(() => {
         } else {
             let sender = snapshot.val().sender;
             let message = snapshot.val().message;
-            if ($("#chat p").length > 8) {
-                $("#chat p").last().remove();
-            }
-            $("#chat").prepend(`<p><span>${sender}:</span> ${message}</p>`);
+            $("#chat").append(`<p><span>${sender}:</span> ${message}</p>`);
+            $("#chat").scrollTop($("#chat")[0].scrollHeight);
         }
     });
 

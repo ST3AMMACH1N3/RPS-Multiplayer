@@ -28,7 +28,8 @@ select {
     background: #eee;
     position: relative;
     line-height: 1.25em;
-    min-height: 300px;
+    height: 300px;
+    overflow-y: auto;
 }
 
 #chat p {
@@ -59,14 +60,12 @@ select {
     text-align: center;
     padding: 20px;
     overflow: hidden;
+    border: 1px solid #000;
 }
 
 #input-box {
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    position: absolute;
-    border-top: 1px solid #000;
+    width: 100%;
+    margin: 2px auto;
 }
 
 #player1, #player2 {
