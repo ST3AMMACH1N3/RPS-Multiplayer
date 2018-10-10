@@ -39,13 +39,18 @@ $(document).ready(() => {
         let choices = ["Rock", "Paper", "Scissors"];
         let p1Move = choices.indexOf(players[0].move);
         let p2Move = choices.indexOf(players[1].move);
+        let message;
         //My self made algorithm for finding who won Rock, Paper, Scissors without loops or lots of if statements
         if (p1Move === p2Move) {
+            message = "It was a tie!";
         } else if ((p1Move + 1) % 3 === p2Move) {
+            message = `${players[1].name} won!`
             players[1].wins++;
         } else {
+            message = `${players[0].name} won!`
             players[0].wins++;
         }
+        consoleMessage(message);
         //Give the database the updated wins and reset the moves
         for(let i = 0; i < players.length; i++) {
             updateDatabase(findPlayer("players", players[i].name), "wins", players[i].wins);
@@ -139,6 +144,13 @@ $(document).ready(() => {
         database.ref(tempRef).set(value);
     }
 
+    function consoleMessage(message) {
+        database.ref("chat").push({
+            sender: "console",
+            message: message
+        });
+    }
+
     database.ref("players").on("child_added", (snapshot) => {
         //Whenever a player is added on the database add it as an object to the local array
         players.push({
@@ -185,11 +197,14 @@ $(document).ready(() => {
         }
         //If I am the one being changed and my move changed, not my wins
         if (myName === snapshot.val().name && snapshot.val().move !== tempMove) {
+            if (snapshot.val().move !== "none") {
+                consoleMessage(`${myName} has selected`);
+            }
             //Change my choices to reflect it
             changeHands(snapshot.val().move);
             //If player1 and player2 both have moves in check the winner
             if (allMovesIn) {
-                checkWinner();  
+                setTimeout(checkWinner, 500);  
             }
             return;
         }
@@ -220,7 +235,20 @@ $(document).ready(() => {
         } else {
             let sender = snapshot.val().sender;
             let message = snapshot.val().message;
-            $("#chat").append(`<p><span>${sender}:</span> ${message}</p>`);
+            let senderSpan = $("<span>").text(`${sender}: `)
+            let messageP = $("<p>").text(`${message}`).prepend(senderSpan);
+            if (sender === "console") {
+                senderSpan.remove();
+                messageP.css("text-align", "center").css("font-weight", "bold");
+            } else if (sender === players[0].name) {
+                senderSpan.addClass("p1-username");
+            } else if (sender === players[1].name) {
+                senderSpan.addClass("p2-username");
+            } else {
+                senderSpan.addClass("v-username");
+            }
+            
+            $("#chat").append(messageP);
             $("#chat").scrollTop($("#chat")[0].scrollHeight);
         }
     });

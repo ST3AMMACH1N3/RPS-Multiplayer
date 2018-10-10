@@ -21,6 +21,22 @@ select {
     margin: 5px 0px 15px 0px;
 }
 
+.p1-username {
+    color: #00f;
+}
+
+.p2-username {
+    color: #f00;
+}
+
+.v-username {
+    color: #909;
+}
+
+.c-username {
+    color: #000;
+}
+
 #chat {
     position: relative;
     text-align: left;
@@ -34,10 +50,6 @@ select {
 
 #chat p {
     padding: 5px 5px;
-}
-
-#chat span {
-    color: #00f;
 }
 
 #chat p:nth-child(odd) {
